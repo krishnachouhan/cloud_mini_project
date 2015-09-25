@@ -1,0 +1,95 @@
+PROCESS PROTOTYPES:
+--------------------
+Volume_Creation:
+			Args:		name, 	size;
+			URL:		http://server/volume/create?name=testvolume&size=10
+			Ret:		success=volumeid=1234; 		fail=0;
+#########################################################################################
+Volume_Query:
+			Args: 		volumeid;
+			URL:		http://server/volume/query?volumeid=volumeid
+			Ret:		success={volumeid="", name="", size="", status="", vmid=""}
+					fail={error="volumeid:1234 does not exists"
+#########################################################################################
+Volume_Destroy:
+			Args: 		volumeid;
+			URL: 		http://server/volume/destroy?volumeid=volumeid
+			Ret:		success=1; 	fail=0;
+#########################################################################################
+Volume_Attach:
+			Args: 		vmid, 	volumeid;
+			URL: 		http://server/volume/attach?vmid=vmid&volumeid=volumeid
+			Ret:		success=1; 	fail=0;
+#########################################################################################
+Volume_Detach:
+			Args: 		volumeid;
+			URL: 		http://server/volume/detach?volumeid=volumeid
+			Ret:		success=1; 	fail=0;
+
+#####################################################################################################################################
+FILE STRUCTURE:
+--------------------
+		Attrib:{vol_id, vol_name, vol_size, vol_status, vol_vmid* }
+		
+		primary:vol_id;
+		redunds:vol_size, vol_status, vol_vmid, vol_name
+
+		vol_id  --->  vmid;
+		
+#####################################################################################################################################
+PROCESS STRUCTURE:
+--------------------
+Creation:		take 'vol_name' and 'vol_size'
+			if any system has hard_disk>vol_size available
+				if volume_creation(name, size) != 'success'
+					return 0 (volume creation failed!);
+			else
+				return 0; (not enough space available)
+			return 1;
+#########################################################################################
+Query:			
+			take 'vol_id'
+			if volume_id exists:
+				return data from file conatining the volume_storage data
+			else
+				return "ERROR volumeid:1234 does not exists"
+#########################################################################################
+Volume Destroy:
+			take vol_id
+			if vol_id exists
+				if vol_id is attached
+					if DETACH(vol_id) is successfull
+						return 1
+					else
+						return 0 (volume detach failed!)
+				if DESTROY(vol_id) is successfull
+					return 1
+				else
+					return 0 (volume destroy failed!)
+			else
+				return 0 () (no such volume_id exists)
+#########################################################################################
+Volume Attach:
+			take 'vmid' and 'vol_id'
+			if vmid exists
+				if vol_id exists
+					if VOL_ATTACH() is successfull
+						return 1
+					else
+						return 0 (volume attach failed!)
+				else
+					return 0 (vol_id does not exists)
+			else
+				return 0 (vmid does not exists)
+#########################################################################################
+Volume Detach:
+			take 'vol_id'
+			if vol_id exists
+				if VOL_DETACH is successfull
+					return 1;
+				else
+					return 0 (vol detach failed!)
+			else
+				return 0 (no such volume_id exists)
+#########################################################################################
+#####################################################################################################################################

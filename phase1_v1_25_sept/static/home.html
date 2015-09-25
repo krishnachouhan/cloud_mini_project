@@ -1,0 +1,140 @@
+<html>
+<head>
+  <title>Mini Project</title>
+</head>
+<body bgcolor="GRAY">
+  <p><h1 align="center">MINI PROJECT - Cloud Computing</h1></p>
+  <table border="0px">
+    <tr height="0px">
+      <td width="170px"><p><h3>Virtual Machine</h23></p></td>
+      <td width="600px"></td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td><form action='vm/create'>
+        <table border = "0px">
+          <tr>
+            <td width="170px"></td><td width="170px"></td><td width="170px"></td><td width="170px"></td>
+          </tr>
+          <tr>
+            <td width="170px"></td><td width="170px">Name:</td><td><input type="text" name="name" placeholder="VMid"></td><td width="170px"></td>
+          </tr>
+          <tr>
+            <td width="170px">VM Create</td><td width="170px">Instance Type:</td><td><input type="text" name="instance_type" placeholder="Instance Type"></td><td width="170px"><input type="submit" value="Submit"></td>
+          </tr>
+          <tr>
+            <td width="170px"></td><td width="170px">Image Id:</td><td><input type="text" name="image_id" placeholder="Image Id"></td><td width="170px"></td>
+          </tr>
+          <tr>
+            <td width="170px"></td><td width="170px"></td><td width="170px"></td><td width="170px"></td>
+          </tr>
+        </table>
+        </form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td><form action='vm/query'>
+      <table border = "0px">
+        <tr>
+          <td width="170px">VM Query:</td><td width="170px">VMid:</td><td width="170px"><input type="text" name="vmid" placeholder="Vmid"></td><td width="170px"><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+        </form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td><form action='vm/destroy'>
+      <table border = "0px">
+        <tr>
+          <td width="170px">VM Destroy:</td><td width="170px">VMid:</td><td width="170px"><input type="text" name="vmid" placeholder="VMid"></td><td width="170px"><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+        </form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td>
+        <!form action='vm/types'>
+      <table border = "0px">
+        <tr>
+          <td width="170px">VM Types:</td><td width="170px"></td><td width="170px"><a href="vm/types"><button >List VM Types</button></a></td><td width="170px"></td>
+        </tr>
+      </table>
+        <!/form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td width="170px"><p><h3>Physical Machine</h3></p></td>
+      <td width="600px"></td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td>
+        <!form action='pm/list'>
+        <table border = "0px">
+          <tr>
+            <td width="170px">List PM</td><td width="170px"></td><td width="170px"><a href="vm/types"><button >List PMs</button></a></td><td></td>
+          </tr>
+        </table>
+        <!/form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td><form action='pm/listvms'>
+      <table border = "0px">
+        <tr>
+          <td width="170px">List VM:</td><td width="170px">VMid:</td><td width="170px"><input type="text" name="vmid" placeholder="VMid"></td><td width="170px"><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+        </form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td><form action='pm/query'>
+      <table border = "0px">
+        <tr>
+          <td width="170px">PM Query:</td><td width="170px">PMid:</td><td width="170px"><input type="text" name="pmid" placeholder="PMid"></td><td width="170px"><input type="submit" value="Submit"></td>
+        </tr>
+      </table>
+        </form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td width="170px"><p><h3>Image Services</h3></p></td>
+      <td width="600px"></td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td>
+        <!form action='image/list'>
+        <table border = "0px">
+          <tr>
+            <td width="170px">List Images</td><td width="170px"></td><td width="170px"><a href="vm/types"><button >List Images</button></a></td>
+          </tr>
+        </table>
+        <!/form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td>      </td>
+      <td><form action='vm/destroy'>
+        <p> Things to enter </p>
+        <input type="text" name="vmid">
+        <input type="submit" value="Submit">
+        </form>
+      </td>
+    </tr>
+    <tr height="0px">
+      <td>      <input type="text" name="first button"></td>
+      <td>      <a href="hello/world"><button >List Images</button></a>      </td>
+    </tr>
+
+<tr></tr>
+  </table>
+</body>
+</html>
